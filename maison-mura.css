@@ -1,36 +1,7 @@
-/* ==========================================================================
-   MAISON MURA: site-wide styles (fonts, colours, shared section styles)
-
-   This file lives in the GitHub repo DMSRetail/MaisonMuraFonts and is loaded
-   on every page by one <link> line in Lightspeed's head code:
-   Website > Overview > SEO settings > Header meta tags and site verification.
-
-   Edit this file on GitHub to change the brand styles. jsDelivr caches it, so
-   changes can take a while to appear (see the note in the instructions).
-   ========================================================================== */
-
-/* ===== 1. Register the fonts ===== */
-
-/* Nib Pro Light: headers */
-@font-face {
-  font-family: "Nib Pro";
-  src: url("https://cdn.jsdelivr.net/gh/DMSRetail/MaisonMuraFonts@main/NibPro-Light.ttf") format("truetype"),
-       url("https://raw.githubusercontent.com/DMSRetail/MaisonMuraFonts/main/NibPro-Light.ttf") format("truetype");
-  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
-
-/* Basis Grotesque Regular: body text */
-@font-face {
-  font-family: "Basis Grotesque";
-  src: url("https://cdn.jsdelivr.net/gh/DMSRetail/MaisonMuraFonts@main/BasisGrotesque-Regular.ttf") format("truetype"),
-       url("https://raw.githubusercontent.com/DMSRetail/MaisonMuraFonts/main/BasisGrotesque-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
+ 
 /* Basis Grotesque Medium: subheaders, and bold text within body copy */
 @font-face {
   font-family: "Basis Grotesque";
@@ -40,21 +11,21 @@
   font-style: normal;
   font-display: swap;
 }
-
-
+ 
+ 
 /* ===== 2. Font stacks (fallbacks show while files load, or if they fail) ===== */
-
+ 
 :root {
   --mm-font-header: "Nib Pro", Georgia, "Times New Roman", serif;
   --mm-font-body: "Basis Grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
-
+ 
+ 
 /* ===== 3. Apply them =====
    Every selector is wrapped in :where(), which gives it zero specificity.
    That way the three rules below simply win in the order they're written:
    body first, then subheaders, then headers on top.                       */
-
+ 
 /* Body: Basis Grotesque Regular on everything.
    CHANGED: the old version skipped any element whose class name merely
    CONTAINED "icon" or "fa-". Lightspeed uses "icon" in the class names of
@@ -64,12 +35,12 @@
 :where(body, body *:not(svg, svg *)) {
   font-family: var(--mm-font-body) !important;
 }
-
+ 
 /* Only Regular and Medium exist, so stop browsers faking a heavier bold */
 body {
   font-synthesis: style;
 }
-
+ 
 /* Subheaders: Basis Grotesque Medium */
 :where(h3, h4, h5, h6,
        .ec-header-h3, .ec-header-h4, .ec-header-h5, .ec-header-h6),
@@ -78,7 +49,7 @@ body {
   font-family: var(--mm-font-body) !important;
   font-weight: 500 !important;
 }
-
+ 
 /* Headers: Nib Pro Light
    If a headline still shows in Basis Grotesque, right-click it > Inspect,
    copy its class, and add it to BOTH lists below (e.g. .some-title-class). */
@@ -89,13 +60,13 @@ body {
   font-family: var(--mm-font-header) !important;
   font-weight: 300 !important;
 }
-
-
+ 
+ 
 /* ===== 4. Brand colours (NEW) =====
    Every Maison Mura section reads its colours from here, so a colour
    changed on this one line updates the whole site.
    Swap --mm-accent for Matthieu's final hex code when it arrives.        */
-
+ 
 :root {
   --mm-base: #301821;          /* deep plum: dark sections, buttons */
   --mm-accent: #D2B683;        /* gold (placeholder): buttons on plum, highlights */
@@ -108,13 +79,13 @@ body {
   --mm-tile: #F1ECE6;          /* product tiles and cards */
   --mm-line: #E6DFD6;          /* borders and dividers */
 }
-
-
+ 
+ 
 /* ===== 5. Shared section styles (NEW) =====
    Every custom code section is wrapped in <section class="mm-section ...">.
    These rules only touch elements inside those sections, so nothing else
    on the site is affected.                                                */
-
+ 
 /* Layout basics */
 .mm-section,
 .mm-section *,
@@ -132,7 +103,7 @@ body {
   margin: 0 auto;
   padding: 0 32px;
 }
-
+ 
 /* Section titles in Nib Pro. Most titles are <h2>s, which the header rule
    above already styles; these extra lines set the size and colour. */
 .mm-section .mm-title {
@@ -144,7 +115,7 @@ body {
   letter-spacing: 0;
   color: var(--mm-ink, #1F1418);
 }
-
+ 
 /* Small uppercase label above a title */
 .mm-section .mm-eyebrow {
   margin: 0;
@@ -154,7 +125,7 @@ body {
   text-transform: uppercase;
   color: var(--mm-gold-deep, #7D5F2A);
 }
-
+ 
 /* Pill buttons. Combine a size and a colour: class="mm-btn mm-btn--base" */
 .mm-section .mm-btn,
 .mm-section .mm-btn:visited {
@@ -176,7 +147,7 @@ body {
 .mm-section .mm-btn:hover { opacity: 0.88; transform: translateY(-1px); }
 .mm-section .mm-btn--sm { padding: 8px 16px; font-size: 13px; }
 .mm-section .mm-btn--lg { padding: 15px 28px; font-size: 16px; }
-
+ 
 .mm-section .mm-btn--base,
 .mm-section .mm-btn--base:visited { background: var(--mm-base, #301821); border-color: var(--mm-base, #301821); color: #FFFFFF; }
 .mm-section .mm-btn--accent,
@@ -185,7 +156,7 @@ body {
 .mm-section .mm-btn--ghost-light:visited { background: transparent; border-color: rgba(255, 255, 255, 0.7); color: #FFFFFF; }
 .mm-section .mm-btn--ghost-dark,
 .mm-section .mm-btn--ghost-dark:visited { background: transparent; border-color: var(--mm-base, #301821); color: var(--mm-base, #301821); }
-
+ 
 /* Text link with a chevron: "Shop all wine ›" */
 .mm-section .mm-link,
 .mm-section .mm-link:visited {
@@ -199,7 +170,7 @@ body {
 }
 .mm-section .mm-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 .mm-section .mm-link svg { width: 16px; height: 16px; flex: none; }
-
+ 
 /* Visible outline for people who navigate with a keyboard */
 .mm-section a:focus-visible,
 .mm-section button:focus-visible,
@@ -209,7 +180,7 @@ body {
   outline: 3px solid var(--mm-accent, #D2B683);
   outline-offset: 3px;
 }
-
+ 
 /* Bottle photos straight from Lightspeed. Each product photo is a square
    with the bottle in the middle and empty, see-through space either side.
    aspect-ratio makes the image box narrow, and object-fit: cover trims the
@@ -223,7 +194,7 @@ body {
   object-fit: cover;
 }
 .mm-section .mm-bottle--wide { aspect-ratio: 0.5; } /* for wider bottles, e.g. the Van Zellers port */
-
+ 
 /* Rows that scroll sideways (cards and product lineups) */
 .mm-section .mm-scroller {
   display: flex;
@@ -236,16 +207,59 @@ body {
   scrollbar-color: var(--mm-line, #E6DFD6) transparent;
 }
 .mm-section .mm-scroller > * { scroll-snap-align: start; flex: none; }
-
+ 
 /* Phones */
 @media (max-width: 734px) {
   .mm-section .mm-container { padding: 0 20px; }
   .mm-section .mm-link { font-size: 16px; }
   .mm-section .mm-scroller { gap: 14px; padding: 4px 20px 16px; scroll-padding-left: 20px; }
 }
-
+ 
 /* Respect "reduce motion" settings */
 @media (prefers-reduced-motion: reduce) {
   .mm-section .mm-btn { transition: none; }
   .mm-section .mm-btn:hover { transform: none; }
 }
+ 
+ 
+/* ===== 6. Header on pages other than the homepage =====
+   Lightspeed only makes the header see-through on the homepage. On every
+   other page it adds the class "ins-tile--adapted-background", paints the
+   header grey (#D3D3D3) and pushes the page content down below it.
+ 
+   The fix has two parts:
+   a) Every page: swap the grey for brand plum (matches the announcement bar).
+   b) When the first section under the header is a full-width photo
+      (Lightspeed image sections, a Cover section, or a Maison Mura hero),
+      shrink the header's section to zero height so the photo slides up
+      underneath it, and make the header see-through, like the homepage.
+ 
+   How to read the selectors in part b:
+   .ins-tile--header:has(+ X) means "the header section whose very next
+   section is X". Older browsers that don't understand :has() simply keep
+   the plum header from part a.                                            */
+ 
+/* a) Solid plum instead of grey */
+.ins-tile--header.ins-tile--adapted-background .ins-header {
+  background-color: var(--mm-base, #301821) !important;
+}
+ 
+/* b) Float over a photo: the header's section takes up no space... */
+.ins-tile--header.ins-tile--adapted-background:has(+ .ins-tile--has-image[class*="ins-tile--fullwidth"]),
+.ins-tile--header.ins-tile--adapted-background:has(+ .ins-tile--cover),
+.ins-tile--header.ins-tile--adapted-background:has(+ * .mm-hero),
+.ins-tile--header.ins-tile--adapted-background:has(+ * .mm-ev-hero) {
+  height: 0 !important;
+  min-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+ 
+/* ...and the header itself is see-through */
+.ins-tile--header.ins-tile--adapted-background:has(+ .ins-tile--has-image[class*="ins-tile--fullwidth"]) .ins-header,
+.ins-tile--header.ins-tile--adapted-background:has(+ .ins-tile--cover) .ins-header,
+.ins-tile--header.ins-tile--adapted-background:has(+ * .mm-hero) .ins-header,
+.ins-tile--header.ins-tile--adapted-background:has(+ * .mm-ev-hero) .ins-header {
+  background-color: transparent !important;
+}
+ 
